@@ -143,10 +143,10 @@ TO '/tmp/automobili.csv' DELIMITER ',' CSV HEADER;
 
 
 
-COPY (SELECT to_json(entitet)
-FROM (SELECT automobili.*, json_agg(motori.*)
+COPY (SELECT array_to_json(array_agg(row_to_json(entitet)))
+FROM (SELECT automobili.*, array_to_json(array_agg(to_json(motori.*))) as motori
 FROM automobili 
 INNER JOIN motori on automobili.id_automobila = motori.id_auta
 GROUP BY automobili.id_automobila) entitet)
-TO '/tmp/auto.json';
+TO '/tmp/automobili.json'
 
