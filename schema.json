@@ -1,0 +1,145 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://github.com/okresam/otvoreno-racunarstvo/blob/main/automobili.json",
+    "type": "array",
+    "title": "Automobili",
+    "description": "Razni modeli automobila i njihove specifikacije",
+    "items": {
+        "type": "object",
+        "title": "Automobil",
+        "required": [
+            "id_automobila",
+            "proizvodac",
+            "naziv_modela",
+            "pocetak_proizvodnje",
+            "broj_sjedala",
+            "broj_vrata",
+            "min_velicina_prtljaznika",
+            "max_velicina_prtljaznika",
+            "duljina",
+            "sirina",
+            "visina",
+            "zavrsetak_proizvodnje",
+            "motori"
+        ],
+        "properties": {
+            "id_automobila": {
+                "type": "integer",
+                "title": "id_automobila",
+                "description": "Jedinstveni broj koji predstavlja primarni kljuc automobila",
+            },
+            "proizvodac": {
+                "type": "string",
+                "title": "proizvodac",
+                "description": "Naziv proizvođaća automobila",
+            },
+            "naziv_modela": {
+                "type": "string",
+                "title": "naziv_modela",
+                "description": "naziv modela automobila",
+            },
+            "pocetak_proizvodnje": {
+                "type": "integer",
+                "title": "pocetak_proizvodnje",
+                "description": "Godina početka proizvodnje modela automobila",
+            },
+            "broj_sjedala": {
+                "type": "integer",
+                "title": "broj_sjedala",
+                "description": "Broj sjedala u automobilu",
+            },
+            "broj_vrata": {
+                "type": "integer",
+                "title": "broj_vrata",
+                "description": "Broj vrata na automobilu",
+            },
+            "min_velicina_prtljaznika": {
+                "type": "integer",
+                "title": "min_velicina_prtljaznika",
+                "description": "Veličina prtljažnika u litrima",
+            },
+            "max_velicina_prtljaznika": {
+                "type": [
+                    "integer",
+                    "null"
+                ],
+                "title": "max_velicina_prtljaznika",
+                "description": "Veličina prtljažnika kada su spuštena zadnja sjedala u litrima",
+            },
+            "duljina": {
+                "type": "integer",
+                "title": "duljina",
+                "description": "Duljina automobila u milimetrima",
+            },
+            "sirina": {
+                "type": "integer",
+                "title": "sirina",
+                "description": "Širina automobila u milimetrima",
+            },
+            "visina": {
+                "type": "integer",
+                "title": "visina",
+                "description": "Visina automobila u milimetrima",
+            },
+            "zavrsetak_proizvodnje": {
+                "type": "integer",
+                "title": "zavrsetak_proizvodnje",
+                "description": "Godina završetka proizvodnje modela automobila",
+            },
+            "motori": {
+                "type": "array",
+                "title": "motori",
+                "items": {
+                    "type": "object",
+                    "title": "Motori",
+                    "required": [
+                        "id_motora",
+                        "gorivo",
+                        "broj_cilindri",
+                        "zapremina",
+                        "snaga",
+                        "okretni_moment",
+                        "id_auta"
+                    ],
+                    "properties": {
+                        "id_motora": {
+                            "type": "integer",
+                            "title": "id_motora",
+                            "description": "Jedinstveni broj koji predstavlja primarni kljuc motora",
+                        },
+                        "gorivo": {
+                            "type": "string",
+                            "title": "gorivo",
+                            "description": "Vrsta goriva za motor",
+                        },
+                        "broj_cilindri": {
+                            "type": "integer",
+                            "title": "broj_cilindri",
+                            "description": "Broj cilindri u motoru",
+                        },
+                        "zapremina": {
+                            "type": "integer",
+                            "title": "zapremina",
+                            "description": "Zapremina motora u kubnim centimetrima",
+                        },
+                        "snaga": {
+                            "type": "integer",
+                            "title": "snaga",
+                            "description": "Konjska snaga motora",
+                        },
+                        "okretni_moment": {
+                            "type": "integer",
+                            "title": "okretni_moment",
+                            "description": "Okretni moment motora u newton metrima",
+                        },
+                        "id_auta": {
+                            "type": "integer",
+                            "title": "id_auta",
+                            "description": "id_automobila kojem motor pripada",
+                        }
+                    },
+                },
+            }
+	}
+    }
+}
