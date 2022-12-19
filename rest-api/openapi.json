@@ -1,0 +1,717 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Automobili API",
+        "description": "API za dohvaćanje i uređivanje otvorenih podataka o automobilima",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/automobili": {
+            "description": "Operacije nad podacima o automobilima",
+            "get": {
+                "description": "Dohvaćanje svih automobila",
+                "responses": {
+                    "200": {
+                        "description": "Uspješno dohvaćanje svih automobila",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id_automobila": {
+                                                "description": "Jedinstveni broj koji predstavlja primarni kljuc automobila",
+                                                "type": "integer"
+                                            },
+                                            "proizvodac": {
+                                                "description": "Naziv proizvođača automobila",
+                                                "type": "string"
+                                            },
+                                            "naziv_modela": {
+                                                "description": "Naziv modela automobila",
+                                                "type": "string"
+                                            },
+                                            "pocetak_proizvodnje": {
+                                                "description": "Godina početka proizvodnje modela automobila",
+                                                "type": "integer"
+                                            },
+                                            "broj_sjedala": {
+                                                "description": "Broj sjedala u automobilu",
+                                                "type": "integer"
+                                            },
+                                            "broj_vrata": {
+                                                "description": "Broj vrata na automobilu",
+                                                "type": "integer"
+                                            },
+                                            "min_velicina_prtljaznika": {
+                                                "description": "Veličina prtljažnika u litrima",
+                                                "type": "integer"
+                                            },
+                                            "max_velicina_prtljaznika": {
+                                                "description": "Veličina prtljažnika kada su spuštena zadnja sjedala u litrima",
+                                                "type": "integer"
+                                            },
+                                            "duljina": {
+                                                "description": "Duljina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "sirina": {
+                                                "description": "Širina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "visina": {
+                                                "description": "Visina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "zavrsetak_proizvodnje": {
+                                                "description": "Godina završetka proizvodnje modela automobila",
+                                                "type": "integer"
+                                            },
+                                            "motori": {
+                                                "description": "Svi motori koji mogu biti u automobilu",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "minItems": 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Neuspješno dohvaćanje automobila",
+                        "content": {
+                            "type": "text",
+                            "example": "Greška u povezivanju s bazom podataka"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Dodavanje novog automobila",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "id_automobila",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Jedinstveni broj koji predstavlja primarni kljuc automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "proizvodac",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Naziv proizvođača automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "naziv_modela",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Naziv modela automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "pocetak_proizvodnje",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Godina početka proizvodnje modela automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "broj_sjedala",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Broj sjedala u automobilu"
+                    },
+                    {
+                        "in": "body",
+                        "name": "broj_vrata",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Broj vrata na automobilu"
+                    },
+                    {
+                        "in": "body",
+                        "name": "min_velicina_prtljaznika",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Veličina prtljažnika u litrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "max_velicina_prtljaznika",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Veličina prtljažnika kada su spuštena zadnja sjedala u litrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "duljina",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Duljina automobila u milimetrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "sirina",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Širina automobila u milimetrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "visina",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Visina automobila u milimetrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "zavrsetak_proizvodnje",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Godina završetka proizvodnje modela automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "motori",
+                        "schema": {
+                            "type": "object"
+                        },
+                        "description": "Svi motori koji mogu biti u automobilu"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Novi automobil uspješno dodan",
+                        "content": {
+                            "text": {
+                                "example": "Automobil dodan"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dodavanje novog automobila nije uspjelo, nisu unesena sva polja",
+                        "content": {
+                            "text": {
+                                "example": "Moraju biti popunjena sva polja automobila"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Dodavanje novog automobila nije uspjelo, greška na poslužitelju",
+                        "content": {
+                            "text": {
+                                "example": "Dogodila se greška"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/automobili/{id}": {
+            "description": "Operacije nad specifičnim automobilom",
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "description": "Id automobila",
+                    "required": true
+                }
+            ],
+            "get": {
+                "description": "Dohvaćanje specifičnog automobila",
+                "responses": {
+                    "200": {
+                        "description": "Uspješno dohvaćanje automobila",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "properties": {
+                                            "id_automobila": {
+                                                "description": "Jedinstveni broj koji predstavlja primarni kljuc automobila",
+                                                "type": "integer"
+                                            },
+                                            "proizvodac": {
+                                                "description": "Naziv proizvođača automobila",
+                                                "type": "string"
+                                            },
+                                            "naziv_modela": {
+                                                "description": "Naziv modela automobila",
+                                                "type": "string"
+                                            },
+                                            "pocetak_proizvodnje": {
+                                                "description": "Godina početka proizvodnje modela automobila",
+                                                "type": "integer"
+                                            },
+                                            "broj_sjedala": {
+                                                "description": "Broj sjedala u automobilu",
+                                                "type": "integer"
+                                            },
+                                            "broj_vrata": {
+                                                "description": "Broj vrata na automobilu",
+                                                "type": "integer"
+                                            },
+                                            "min_velicina_prtljaznika": {
+                                                "description": "Veličina prtljažnika u litrima",
+                                                "type": "integer"
+                                            },
+                                            "max_velicina_prtljaznika": {
+                                                "description": "Veličina prtljažnika kada su spuštena zadnja sjedala u litrima",
+                                                "type": "integer"
+                                            },
+                                            "duljina": {
+                                                "description": "Duljina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "sirina": {
+                                                "description": "Širina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "visina": {
+                                                "description": "Visina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "zavrsetak_proizvodnje": {
+                                                "description": "Godina završetka proizvodnje modela automobila",
+                                                "type": "integer"
+                                            },
+                                            "motori": {
+                                                "description": "Svi motori koji mogu biti u automobilu",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "minItems": 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Dohvaćanje automobila nije uspjelo, automobil ne postoji",
+                        "content": {
+                            "text": {
+                                "example": "Automobil s navedenim id-om ne postoji"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Dohvaćanje automobila nije uspjelo, greška na serveru",
+                        "content": {
+                            "text": {
+                                "example": "Dogodila se greška"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Promjena vrijednosti postojećeg automobila",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Jedinstveni broj koji predstavlja primarni kljuc automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "proizvodac",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Naziv proizvođača automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "naziv_modela",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Naziv modela automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "pocetak_proizvodnje",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Godina početka proizvodnje modela automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "broj_sjedala",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Broj sjedala u automobilu"
+                    },
+                    {
+                        "in": "body",
+                        "name": "broj_vrata",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Broj vrata na automobilu"
+                    },
+                    {
+                        "in": "body",
+                        "name": "min_velicina_prtljaznika",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Veličina prtljažnika u litrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "max_velicina_prtljaznika",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Veličina prtljažnika kada su spuštena zadnja sjedala u litrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "duljina",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Duljina automobila u milimetrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "sirina",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Širina automobila u milimetrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "visina",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Visina automobila u milimetrima"
+                    },
+                    {
+                        "in": "body",
+                        "name": "zavrsetak_proizvodnje",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Godina završetka proizvodnje modela automobila"
+                    },
+                    {
+                        "in": "body",
+                        "name": "motori",
+                        "schema": {
+                            "type": "object"
+                        },
+                        "description": "Svi motori koji mogu biti u automobilu"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Uspješno promjena atributa automobila",
+                        "content": {
+                            "text": {
+                                "example": "Automobil izmjenjen"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Neuspješna promjena atributa automobila, nisu unesena sva polja",
+                        "content": {
+                            "text": {
+                                "example": "Moraju biti popunjena sva polja automobila"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Neuspješna promjena atributa automobila, automobil ne postoji",
+                        "content": {
+                            "text": {
+                                "example": "Ne postoji automobil sa zadanim id-om"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Neuspješna promjena atributa automobila, greška na poslužitelju",
+                        "content": {
+                            "text": {
+                                "example": "Dogodila se greška"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Brisanje specifičnog automobila",
+                "responses": {
+                    "200": {
+                        "description": "Automobil je uspješno obrisan",
+                        "content": {
+                            "text": {
+                                "example": "Automobil obrisan"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Neuspješno brisanje automobila, automobil ne postoji",
+                        "content": {
+                            "text": {
+                                "example": "Automobil sa navedenim id-om ne postoji"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Neuspješno brisanje automobila, greška na poslužitelju",
+                        "content": {
+                            "text": {
+                                "example": "Dogodila se greška"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/automobili/small-trunk": {
+            "description": "Operacije nad automobilima koji imaju mali prtljažnik",
+            "get": {
+                "description": "Dohvaćanje automobila s malim prtljažnikom",
+                "responses": {
+                    "200": {
+                        "description": "Uspješno dohvaćanje svih automobila",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id_automobila": {
+                                                "description": "Jedinstveni broj koji predstavlja primarni kljuc automobila",
+                                                "type": "integer"
+                                            },
+                                            "proizvodac": {
+                                                "description": "Naziv proizvođača automobila",
+                                                "type": "string"
+                                            },
+                                            "naziv_modela": {
+                                                "description": "Naziv modela automobila",
+                                                "type": "string"
+                                            },
+                                            "pocetak_proizvodnje": {
+                                                "description": "Godina početka proizvodnje modela automobila",
+                                                "type": "integer"
+                                            },
+                                            "broj_sjedala": {
+                                                "description": "Broj sjedala u automobilu",
+                                                "type": "integer"
+                                            },
+                                            "broj_vrata": {
+                                                "description": "Broj vrata na automobilu",
+                                                "type": "integer"
+                                            },
+                                            "min_velicina_prtljaznika": {
+                                                "description": "Veličina prtljažnika u litrima",
+                                                "type": "integer"
+                                            },
+                                            "max_velicina_prtljaznika": {
+                                                "description": "Veličina prtljažnika kada su spuštena zadnja sjedala u litrima",
+                                                "type": "integer"
+                                            },
+                                            "duljina": {
+                                                "description": "Duljina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "sirina": {
+                                                "description": "Širina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "visina": {
+                                                "description": "Visina automobila u milimetrima",
+                                                "type": "integer"
+                                            },
+                                            "zavrsetak_proizvodnje": {
+                                                "description": "Godina završetka proizvodnje modela automobila",
+                                                "type": "integer"
+                                            },
+                                            "motori": {
+                                                "description": "Svi motori koji mogu biti u automobilu",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "minItems": 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Neuspješno dohvaćanje automobila s malim prtljažnikom",
+                        "content": {
+                            "text": {
+                                "example": "Dogodila se greška"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/motori": {
+            "description": "Operacije nad motorima",
+            "get": {
+                "description": "Dohvaćanje svih motora",
+                "responses": {
+                    "200": {
+                        "description": "Uspješno dohvaćanje svih motora",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id_motora": {
+                                                "description": "Jedinstveni broj koji predstavlja primarni kljuc motora",
+                                                "type": "integer"
+                                            },
+                                            "gorivo": {
+                                                "description": "Vrsta goriva za motor",
+                                                "type": "string"
+                                            },
+                                            "broj_cilindri": {
+                                                "description": "Broj cilindri u motoru",
+                                                "type": "integer"
+                                            },
+                                            "zapremina": {
+                                                "description": "Zapremina motora u kubnim centimetrima",
+                                                "type": "integer"
+                                            },
+                                            "snaga": {
+                                                "description": "Konjska snaga motora",
+                                                "type": "integer"
+                                            },
+                                            "okretni_moment": {
+                                                "description": "Okretni moment motora u newton metrima",
+                                                "type": "integer"
+                                            },
+                                            "id_auta": {
+                                                "description": "Id_automobila kojem motor pripada",
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Neuspješno dohvaćanje motora",
+                        "content": {
+                            "text": {
+                                "example": "Dogodila se greška"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/motori/{id}": {
+            "description": "Operacije nad specifičnim motorom",
+            "get": {
+                "description": "Dohvaćanje specifičnog motora",
+                "responses": {
+                    "200": {
+                        "description": "Uspješno dohvaćanje svih motora",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "properties": {
+                                            "id_motora": {
+                                                "description": "Jedinstveni broj koji predstavlja primarni kljuc motora",
+                                                "type": "integer"
+                                            },
+                                            "gorivo": {
+                                                "description": "Vrsta goriva za motor",
+                                                "type": "string"
+                                            },
+                                            "broj_cilindri": {
+                                                "description": "Broj cilindri u motoru",
+                                                "type": "integer"
+                                            },
+                                            "zapremina": {
+                                                "description": "Zapremina motora u kubnim centimetrima",
+                                                "type": "integer"
+                                            },
+                                            "snaga": {
+                                                "description": "Konjska snaga motora",
+                                                "type": "integer"
+                                            },
+                                            "okretni_moment": {
+                                                "description": "Okretni moment motora u newton metrima",
+                                                "type": "integer"
+                                            },
+                                            "id_auta": {
+                                                "description": "Id_automobila kojem motor pripada",
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Neuspješno dohvaćanje motora, motor ne postoji",
+                        "content": {
+                            "text": {
+                                "example": "Ne postoji motor s navedenim id-om"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Neuspješno dohvaćanje motora, greška na poslužitelju",
+                        "content": {
+                            "text": {
+                                "example": "Dogodila se greška"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
