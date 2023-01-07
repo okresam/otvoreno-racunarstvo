@@ -19,6 +19,22 @@
                                     "type": "array",
                                     "items": {
                                         "properties": {
+                                            "@context": {
+                                                "@vocab": "http://schema.org/",
+                                                "id_automobila": "http://schema.org/identifier",
+                                                "proizvodac": "http://schema.org/manufacturer",
+                                                "naziv_modela": "http://schema.org/model",
+                                                "pocetak_proizvodnje": "http://schema.org/yearBuilt",
+                                                "broj_sjedala": "http://schema.org/seatingCapacity",
+                                                "broj_vrata": "http://schema.org/numberOfDoors",
+                                                "min_velicina_prtljaznika": "http://schema.org/cargoVolume",
+                                                "max_velicina_prtljaznika": "http://schema.org/QuantitativeValue",
+                                                "duljina": "http://schema.org/QuantitativeValue",
+                                                "sirina": "http://schema.org/width",
+                                                "visina": "http://schema.org/height",
+                                                "zavrsetak_proizvodnje": "http://schema.org/Number",
+                                                "motori": "http://schema.org/ItemList"
+                                            },
                                             "id_automobila": {
                                                 "description": "Jedinstveni broj koji predstavlja primarni kljuc automobila",
                                                 "type": "integer"
@@ -82,6 +98,10 @@
                         }
                     },
                     "500": {
+                        "@context": {
+                            "@vocab": "http://schema.org/",
+                            "description": "http://schema.org/description"
+                        },
                         "description": "Neuspješno dohvaćanje automobila",
                         "content": {
                             "type": "text",
@@ -200,6 +220,11 @@
                 ],
                 "responses": {
                     "201": {
+                        "@context": {
+                            "@vocab": "http://schema.org/",
+                            "description": "http://schema.org/description",
+                            "content": "http://schema.org/text"
+                        },
                         "description": "Novi automobil uspješno dodan",
                         "content": {
                             "text": {

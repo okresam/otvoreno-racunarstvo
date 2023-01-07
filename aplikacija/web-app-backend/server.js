@@ -47,6 +47,14 @@ app.post('/automobili/search/json', async (req, res) => {
     res.send(result.rows[0].array_to_json)
 })
 
+app.get('/refresh-data', async (req, res) => {
+    await dbq.refreshFiles()
+    const subProcess = require('child_process')
+    subProcess.exec('cp /tmp/automobili.csv /home/marko/Desktop/otvoreno-racunarstvo/aplikacija/web-app-backend/resources/automobili.csv')
+    subProcess.exec('cp /tmp/automobili.json /home/marko/Desktop/otvoreno-racunarstvo/aplikacija/web-app-backend/resources/automobili.json')
+    console.log("Generated new files and copied!")
+})
+
 app.listen(port, () => {
     console.log("Started on port: " + port)
 })

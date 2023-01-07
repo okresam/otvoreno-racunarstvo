@@ -159,32 +159,31 @@ app.post('/api/automobili', async (req, res) => {
                     uspjesno = false
                     break
                 } 
-
-                if (uspjesno) {
-                    try {
-                        await dbq.addCar(req.body.id_automobila,
-                            req.body.proizvodac,
-                            req.body.naziv_modela,
-                            req.body.pocetak_proizvodnje,
-                            req.body.broj_sjedala,
-                            req.body.broj_vrata,
-                            req.body.min_velicina_prtljaznika,
-                            req.body.max_velicina_prtljaznika,
-                            req.body.duljina,
-                            req.body.sirina,
-                            req.body.visina,
-                            req.body.zavrsetak_proizvodnje,
-                            req.body.motori)
-                    } catch (e) {
-                        res.status(500).send({
-                            status: "Internal Server Error",
-                            message: "Došlo je do greške. (" + e.message + ")",
-                            reponse: null
-                        })
-                        uspjesno = false
-                    }
+            }
+            
+            if (uspjesno) {
+                try {
+                    await dbq.addCar(req.body.id_automobila,
+                        req.body.proizvodac,
+                        req.body.naziv_modela,
+                        req.body.pocetak_proizvodnje,
+                        req.body.broj_sjedala,
+                        req.body.broj_vrata,
+                        req.body.min_velicina_prtljaznika,
+                        req.body.max_velicina_prtljaznika,
+                        req.body.duljina,
+                        req.body.sirina,
+                        req.body.visina,
+                        req.body.zavrsetak_proizvodnje,
+                        req.body.motori)
+                } catch (e) {
+                    res.status(500).send({
+                        status: "Internal Server Error",
+                        message: "Došlo je do greške. (" + e.message + ")",
+                        reponse: null
+                    })
+                    uspjesno = false
                 }
-
             }
         } else {
             res.status(400).send({
